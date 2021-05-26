@@ -71,8 +71,13 @@ public class Calc2 extends HttpServlet {
 			
 			Cookie valuecookie = new Cookie("value", String.valueOf(v));
 			Cookie opcookie = new Cookie("op", op);
+			valuecookie.setPath("/calc2");
+			valuecookie.setMaxAge(60*60*24); //만료시간(초단위), 설정안했을땐 브라우저 닫으면 삭제됨
+			opcookie.setPath("/calc2");
 			response.addCookie(valuecookie);
 			response.addCookie(opcookie);
+			
+			response.sendRedirect("calc2.html");
 		}
 	}
 }
